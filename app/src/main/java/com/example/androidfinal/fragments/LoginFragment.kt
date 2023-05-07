@@ -5,14 +5,25 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import com.example.androidfinal.R
+import com.example.androidfinal.databinding.FragmentLoginBinding
 
-class LoginFragment : Fragment() {
+class LoginFragment : Fragment(R.layout.fragment_login) {
+    private lateinit var binding: FragmentLoginBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+        binding = FragmentLoginBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+
+        binding.button2.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.toSignupFragment)
+        }
+        binding.button.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.toMainPageFragment)
+        }
+        return binding.root
     }
 }
