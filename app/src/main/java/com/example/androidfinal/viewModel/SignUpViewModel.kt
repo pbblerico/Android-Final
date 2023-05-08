@@ -5,11 +5,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.androidfinal.data.AuthRepositoryImpl
+import com.example.androidfinal.repositories.AuthRepositoryImpl
 import com.google.firebase.auth.AuthResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import com.example.androidfinal.data.Result
+import com.example.androidfinal.utils.Result
 
 class SignUpViewModel(private val authRepositoryImpl: AuthRepositoryImpl = AuthRepositoryImpl()): ViewModel() {
     private val _userSignUpStatus = MutableLiveData<Result<AuthResult>>()

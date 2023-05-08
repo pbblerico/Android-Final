@@ -4,10 +4,10 @@ import com.example.androidfinal.enums.Role
 
 data class User(
     var id: String ="",
-    val username: String,
-    val email: String,
-    val first_name: String = "",
-    val last_name: String = "",
-    val blocked: Boolean = false,
+    var username: String = "",
+    var email: String = "",
+    var first_name: String = "",
+    var last_name: String = "",
+    var blocked: Boolean = false,
     var role: Role = Role.CLIENT
     )

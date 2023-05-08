@@ -16,6 +16,10 @@
         <action
             android:id="@+id/toSignupFragment"
             app:destination="@id/signupFragment" />
+        <action
+            android:id="@+id/toMainPage"
+            app:destination="@id/navigation"
+            app:popUpTo="@id/navigation" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"

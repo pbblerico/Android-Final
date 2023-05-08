@@ -6,13 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.androidfinal.R
 import com.example.androidfinal.databinding.FragmentLoginBinding
 import com.example.androidfinal.viewModel.LoginViewModel
-import com.example.androidfinal.data.Result
+import com.example.androidfinal.utils.Result
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
     private lateinit var binding: FragmentLoginBinding

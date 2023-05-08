@@ -1,8 +1,14 @@
-package com.example.androidfinal.data
+package com.example.androidfinal.repositories
 
+import com.example.androidfinal.interfaces.AuthRepository
 import com.example.androidfinal.models.User
 import com.example.androidfinal.utils.FirebaseUtils
+import com.example.androidfinal.utils.Result
 import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
@@ -25,6 +31,9 @@ class AuthRepositoryImpl(): AuthRepository {
         }
     }
 
+
+
+
     override suspend fun login(email: String, password: String): Result<AuthResult> {
         return withContext(Dispatchers.IO) {
            try {
@@ -36,5 +45,5 @@ class AuthRepositoryImpl(): AuthRepository {
         }
     }
 
-    fun logout() {}
+    override fun logout() {}
 }
