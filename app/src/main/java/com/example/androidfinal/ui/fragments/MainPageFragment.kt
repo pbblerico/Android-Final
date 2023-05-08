@@ -1,4 +1,4 @@
-package com.example.androidfinal
+package com.example.androidfinal.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,7 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.navigation.Navigation
-import com.example.androidfinal.activity.MainActivity
+import com.example.androidfinal.R
+import com.example.androidfinal.ui.activity.MainActivity
 import com.example.androidfinal.databinding.FragmentMainPageBinding
 
 class MainPageFragment : Fragment(R.layout.fragment_main_page) {
@@ -18,6 +19,11 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
     ): View {
         binding = FragmentMainPageBinding.inflate(inflater, container, false)
 //        view
+
+       val curUser = "CLIENT"
+       if(curUser == "CLIENT") {
+            binding.text.visibility = View.GONE
+       }
        (activity as MainActivity).setBottomNavBar()
        binding.button3.setOnClickListener {
            Navigation.findNavController(it).navigate(R.id.toLoginFragment)

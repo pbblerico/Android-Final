@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="com.example.androidfinal.fragments.WelcomeFragment"
+        android:name="com.example.androidfinal.ui.fragments.WelcomeFragment"
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.androidfinal.fragments.LoginFragment"
+        android:name="com.example.androidfinal.ui.fragments.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -32,7 +32,7 @@
     </fragment>
     <fragment
         android:id="@+id/signupFragment"
-        android:name="com.example.androidfinal.fragments.SignupFragment"
+        android:name="com.example.androidfinal.ui.fragments.SignupFragment"
         android:label="fragment_signup"
         tools:layout="@layout/fragment_signup" >
         <action
@@ -46,7 +46,7 @@
         app:startDestination="@id/mainPageFragment">
         <fragment
             android:id="@+id/mainPageFragment"
-            android:name="com.example.androidfinal.MainPageFragment"
+            android:name="com.example.androidfinal.ui.fragments.MainPageFragment"
             android:label="fragment_main_page"
             tools:layout="@layout/fragment_main_page">
             <action
@@ -55,7 +55,7 @@
         </fragment>
         <fragment
             android:id="@+id/cartFragment"
-            android:name="com.example.androidfinal.CartFragment"
+            android:name="com.example.androidfinal.ui.fragments.CartFragment"
             android:label="fragment_cart"
             tools:layout="@layout/fragment_cart" >
             <action
@@ -67,7 +67,7 @@
         </fragment>
         <fragment
             android:id="@+id/profileFragment"
-            android:name="com.example.androidfinal.ProfileFragment"
+            android:name="com.example.androidfinal.ui.fragments.ProfileFragment"
             android:label="fragment_profile"
             tools:layout="@layout/fragment_profile" >
             <action
@@ -85,12 +85,12 @@
         </fragment>
         <fragment
             android:id="@+id/settingsFragment"
-            android:name="com.example.androidfinal.SettingsFragment"
+            android:name="com.example.androidfinal.ui.fragments.SettingsFragment"
             android:label="fragment_settings"
             tools:layout="@layout/fragment_settings" />
         <fragment
             android:id="@+id/libraryFragment"
-            android:name="com.example.androidfinal.LibraryFragment"
+            android:name="com.example.androidfinal.ui.fragments.LibraryFragment"
             android:label="fragment_library"
             tools:layout="@layout/fragment_library" >
             <action
@@ -102,22 +102,22 @@
         </fragment>
         <fragment
             android:id="@+id/itemFragment"
-            android:name="com.example.androidfinal.ItemFragment"
+            android:name="com.example.androidfinal.ui.fragments.ItemFragment"
             android:label="fragment_item"
             tools:layout="@layout/fragment_item" />
         <fragment
             android:id="@+id/companyFragment"
-            android:name="com.example.androidfinal.CompanyFragment"
+            android:name="com.example.androidfinal.ui.fragments.CompanyFragment"
             android:label="fragment_company"
             tools:layout="@layout/fragment_company" />
         <fragment
             android:id="@+id/historyFragment"
-            android:name="com.example.androidfinal.HistoryFragment"
+            android:name="com.example.androidfinal.ui.fragments.HistoryFragment"
             android:label="fragment_history"
             tools:layout="@layout/fragment_history" />
         <fragment
             android:id="@+id/notificationsFragment"
-            android:name="com.example.androidfinal.NotificationsFragment"
+            android:name="com.example.androidfinal.ui.fragments.NotificationsFragment"
             android:label="fragment_notifications"
             tools:layout="@layout/fragment_notifications" />
     </navigation>
