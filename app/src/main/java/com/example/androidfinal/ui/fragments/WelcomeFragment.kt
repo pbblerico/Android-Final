@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.androidfinal.R
 import com.example.androidfinal.databinding.FragmentWelcomeBinding
+import com.example.androidfinal.session.LoginPrefs
 import com.example.androidfinal.utils.FirebaseUtils
 import com.example.androidfinal.utils.Result
 import com.example.androidfinal.viewModel.LoginViewModel
@@ -29,6 +30,25 @@ class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
 
         viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
 
+        val session = LoginPrefs(requireContext())
+        if(session.isLoggedIn()) {
+            login()
+        }
+
+
+
+        binding.button.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.toLoginFragment)
+        }
+
+        binding.button2.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.toSignupFragment)
+        }
+        return binding.root
+    }
+
+
+    fun login() {
         viewModel.login("kmirova@gmail.com", "123456")
 
 
@@ -45,14 +65,5 @@ class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
                 }
             }
         }
-
-        binding.button.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.toLoginFragment)
-        }
-
-        binding.button2.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.toSignupFragment)
-        }
-        return binding.root
     }
 }

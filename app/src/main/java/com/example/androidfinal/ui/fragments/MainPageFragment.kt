@@ -12,6 +12,7 @@ import androidx.navigation.Navigation
 import com.example.androidfinal.R
 import com.example.androidfinal.ui.activity.MainActivity
 import com.example.androidfinal.databinding.FragmentMainPageBinding
+import com.example.androidfinal.session.LoginPrefs
 import com.example.androidfinal.utils.Result
 import com.example.androidfinal.viewModel.LoginViewModel
 
@@ -33,6 +34,8 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
            Navigation.findNavController(it).navigate(R.id.toLoginFragment)
        }
 
+
+
 //       val callback = object : OnBackPressedCallback(
 //           true
 //       ) {
@@ -44,8 +47,6 @@ class MainPageFragment : Fragment(R.layout.fragment_main_page) {
        //manages
        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
            override fun handleOnBackPressed() {
-//               Navigation.findNavController(view!!).navigate(R.id.action_mainPageFragment_to_loginFragment)
-//               Log.d("TAG", "here")
                requireActivity().finish()
            }
        })

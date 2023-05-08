@@ -10,12 +10,17 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.androidfinal.R
 import com.example.androidfinal.databinding.FragmentLoginBinding
+import com.example.androidfinal.session.LoginPrefs
 import com.example.androidfinal.viewModel.LoginViewModel
 import com.example.androidfinal.utils.Result
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
     private lateinit var binding: FragmentLoginBinding
     private lateinit var viewModel: LoginViewModel
+
+    private lateinit var email: String
+    private lateinit var password: String
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,7 +29,10 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
 
         binding.loginBtn.setOnClickListener {
-            viewModel.login("kmirova@gmail.com", "123456")
+            this.email = binding.uname.text.toString()
+            this.password = binding.pass.text.toString()
+
+            viewModel.login(email, password)
 
         }
 
@@ -34,6 +42,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                     Toast.makeText(context, "Loading", Toast.LENGTH_SHORT).show()
                 }
                 is Result.Success -> {
+                    viewModel.createLoginSession(requireContext(), email, password)
                     Navigation.findNavController(requireView()).navigate(R.id.toMainPageFragment)
                 }
                 is Result.Error -> {
@@ -49,4 +58,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 //        }
         return binding.root
     }
+
+
 }
