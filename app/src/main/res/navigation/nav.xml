@@ -19,7 +19,8 @@
         <action
             android:id="@+id/toMainPage"
             app:destination="@id/navigation"
-            app:popUpTo="@id/navigation" />
+            app:popUpTo="@id/navigation"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -29,19 +30,22 @@
         <action
             android:id="@+id/toMainPageFragment"
             app:destination="@id/navigation"
-            app:popUpTo="@id/welcomeFragment" />
+            app:popUpTo="@id/mainPageFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/toSignupFragment"
             app:destination="@id/signupFragment" />
+        <action
+            android:id="@+id/backToWelcome"
+            app:destination="@id/welcomeFragment"
+            app:popUpTo="@id/welcomeFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/signupFragment"
         android:name="com.example.androidfinal.ui.fragments.SignupFragment"
         android:label="fragment_signup"
         tools:layout="@layout/fragment_signup" >
-        <action
-            android:id="@+id/toMainPageFragment"
-            app:destination="@id/navigation" />
         <action
             android:id="@+id/toLoginFragment"
             app:destination="@id/loginFragment" />
@@ -66,8 +70,10 @@
                 android:id="@+id/toItemFragment"
                 app:destination="@id/itemFragment" />
             <action
-                android:id="@+id/action_cartFragment_to_mainPageFragment"
-                app:destination="@id/mainPageFragment" />
+                android:id="@+id/backToMainPage"
+                app:destination="@id/mainPageFragment"
+                app:popUpTo="@id/mainPageFragment"
+                app:popUpToInclusive="true"/>
         </fragment>
         <fragment
             android:id="@+id/profileFragment"
@@ -78,14 +84,16 @@
                 android:id="@+id/toSettingsFragment"
                 app:destination="@id/settingsFragment" />
             <action
-                android:id="@+id/action_profileFragment_to_historyFragment"
+                android:id="@+id/toHistoryFragment"
                 app:destination="@id/historyFragment" />
             <action
                 android:id="@+id/action_profileFragment_to_notificationsFragment"
                 app:destination="@id/notificationsFragment" />
             <action
-                android:id="@+id/action_profileFragment_to_mainPageFragment"
-                app:destination="@id/mainPageFragment" />
+                android:id="@+id/backToMainPage"
+                app:destination="@id/mainPageFragment"
+                app:popUpTo="@id/mainPageFragment"
+                app:popUpToInclusive="true"/>
         </fragment>
         <fragment
             android:id="@+id/settingsFragment"
@@ -101,8 +109,10 @@
                 android:id="@+id/toItemFragment"
                 app:destination="@id/itemFragment" />
             <action
-                android:id="@+id/action_libraryFragment_to_mainPageFragment"
-                app:destination="@id/mainPageFragment" />
+                android:id="@+id/backToMainPage"
+                app:destination="@id/mainPageFragment"
+                app:popUpTo="@id/mainPageFragment"
+                app:popUpToInclusive="true"/>
         </fragment>
         <fragment
             android:id="@+id/itemFragment"

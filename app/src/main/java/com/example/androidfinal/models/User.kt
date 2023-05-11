@@ -8,6 +8,7 @@ data class User(
     var email: String = "",
     var first_name: String = "",
     var last_name: String = "",
+    var purchasedGame: List<PurchasedGame>? = null,
     var blocked: Boolean = false,
     var role: Role = Role.CLIENT
     )

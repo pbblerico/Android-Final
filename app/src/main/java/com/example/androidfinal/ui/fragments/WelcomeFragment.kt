@@ -11,26 +11,24 @@ import androidx.navigation.Navigation
 import com.example.androidfinal.R
 import com.example.androidfinal.databinding.FragmentWelcomeBinding
 import com.example.androidfinal.session.LoginPrefs
-import com.example.androidfinal.utils.FirebaseUtils
+import com.example.androidfinal.ui.activity.MainActivity
 import com.example.androidfinal.utils.Result
-import com.example.androidfinal.viewModel.LoginViewModel
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import com.example.androidfinal.viewModel.WelcomeViewModel
 
 
 class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
     private lateinit var binding: FragmentWelcomeBinding
-    private lateinit var viewModel: LoginViewModel
+    private lateinit var viewModel: WelcomeViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentWelcomeBinding.inflate(inflater, container, false)
 
-        viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
+        viewModel = ViewModelProvider(this)[WelcomeViewModel::class.java]
 
         val session = LoginPrefs(requireContext())
+//        session.logoutUser()
         if(session.isLoggedIn()) {
             login()
         }
@@ -52,12 +50,13 @@ class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
         viewModel.login("kmirova@gmail.com", "123456")
 
 
-        viewModel.userLoginStatus.observe(viewLifecycleOwner) {
+        viewModel.loggedInStatus.observe(viewLifecycleOwner) {
             when (it) {
                 is Result.Loading -> {
                     Toast.makeText(context, "Loading", Toast.LENGTH_SHORT).show()
                 }
                 is Result.Success -> {
+                    (activity as MainActivity).setBottomNavBar()
                     Navigation.findNavController(requireView()).navigate(R.id.toMainPage)
                 }
                 is Result.Error -> {

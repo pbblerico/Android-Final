@@ -1,4 +1,4 @@
-package com.example.androidfinal.interfaces
+package com.example.androidfinal.repositories.interfaces
 
 import com.example.androidfinal.models.User
 import com.example.androidfinal.utils.Result
@@ -10,5 +10,7 @@ interface AuthRepository {
     suspend fun login(email: String, password: String): Result<AuthResult>
 
     suspend fun signUp(email: String, password: String, username: String): Result<AuthResult>
+
+
     fun logout()
 }

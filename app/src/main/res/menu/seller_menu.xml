@@ -1,25 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/mainPageFragment"
+        android:id="@+id/home"
         android:title=""
         android:icon="@drawable/home"
         />
 
     <item
-        android:id="@+id/cartFragment"
+        android:id="@+id/cart"
         android:title=""
         android:icon="@drawable/cart"
         />
 
     <item
-        android:id="@+id/libraryFragment"
+        android:id="@+id/library"
         android:title=""
         android:icon="@drawable/library"
         />
 
     <item
-        android:id="@+id/profileFragment"
+        android:id="@+id/notifications"
+        android:title=""
+        android:icon="@drawable/notifications"
+        />
+
+
+    <item
+        android:id="@+id/profile"
         android:title=""
         android:icon="@drawable/person"
         />

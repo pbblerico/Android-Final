@@ -36,14 +36,16 @@ class LoginViewModel(private val authRepositoryImpl: AuthRepositoryImpl = AuthRe
         val session = LoginPrefs(cont)
         val id = FirebaseUtils.auth.uid!!
         var role = "CLIENT"
+        var username = ""
         FirebaseUtils.ref.getReference("Users").child(id).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 role = "${snapshot.child("role").value}"
+                username = "${snapshot.child("username").value}"
             }
 
             override fun onCancelled(error: DatabaseError) {}
 
         })
-        session.createLoginSession(email, password, id, role)
+        session.createLoginSession(email, password, id, role, username)
     }
 }

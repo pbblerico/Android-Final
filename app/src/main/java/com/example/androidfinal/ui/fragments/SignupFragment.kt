@@ -16,6 +16,12 @@ import com.example.androidfinal.viewModel.SignUpViewModel
 class SignupFragment : Fragment(R.layout.fragment_signup) {
     private lateinit var binding: FragmentSignupBinding
     private lateinit var viewModel: SignUpViewModel
+
+
+    private var username: String = ""
+    private var email: String = ""
+    private var password1 = ""
+    private var password2 = ""
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,7 +30,12 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
         viewModel = ViewModelProvider(this)[SignUpViewModel::class.java]
 
         binding.loginBtn.setOnClickListener {
-            viewModel.signUp("pbl_rc", "kmirova@gmail.com", "123456", "123456")
+            username = binding.uname.text.toString().trim()
+            email = binding.email.text.toString().trim()
+            password1 = binding.pass1.text.toString().trim()
+            password2 = binding.pass2.text.toString().trim()
+
+            viewModel.signUp(username, email, password1, password2)
         }
 
         viewModel.userSignUpStatus.observe(viewLifecycleOwner) {
@@ -33,7 +44,7 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
                     Toast.makeText(context, "Loading", Toast.LENGTH_SHORT).show()
                 }
                 is Result.Success -> {
-                    Navigation.findNavController(requireView()).navigate(R.id.toMainPageFragment)
+                    Navigation.findNavController(requireView()).navigate(R.id.toLoginFragment)
                 }
                 is Result.Error -> {
                     Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()

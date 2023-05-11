@@ -11,7 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import com.example.androidfinal.utils.Result
 
-class SignUpViewModel(private val authRepositoryImpl: AuthRepositoryImpl = AuthRepositoryImpl()): ViewModel() {
+class SignUpViewModel(private val repository: AuthRepositoryImpl = AuthRepositoryImpl()): ViewModel() {
     private val _userSignUpStatus = MutableLiveData<Result<AuthResult>>()
     val userSignUpStatus: LiveData<Result<AuthResult>> = _userSignUpStatus
 
@@ -33,7 +33,7 @@ class SignUpViewModel(private val authRepositoryImpl: AuthRepositoryImpl = AuthR
         _userSignUpStatus.postValue(Result.Loading())
 
         viewModelScope.launch(Dispatchers.Main) {
-            val registerResult = authRepositoryImpl.signUp(username = username, email = email, password = password1)
+            val registerResult = repository.signUp(username = username, email = email, password = password1)
             _userSignUpStatus.postValue(registerResult)
         }
     }
