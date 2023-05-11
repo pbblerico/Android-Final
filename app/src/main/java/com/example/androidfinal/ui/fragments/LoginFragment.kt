@@ -6,11 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.androidfinal.R
 import com.example.androidfinal.databinding.FragmentLoginBinding
-import com.example.androidfinal.session.LoginPrefs
+import com.example.androidfinal.ui.activity.MainActivity
 import com.example.androidfinal.viewModel.LoginViewModel
 import com.example.androidfinal.utils.Result
 
@@ -43,6 +44,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 }
                 is Result.Success -> {
                     viewModel.createLoginSession(requireContext(), email, password)
+                    (activity as MainActivity).setBottomNavBar()
                     Navigation.findNavController(requireView()).navigate(R.id.toMainPageFragment)
                 }
                 is Result.Error -> {
@@ -50,12 +52,13 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 }
             }
         }
-//        binding.button2.setOnClickListener {
-//            Navigation.findNavController(it).navigate(R.id.toSignupFragment)
-//        }
-//        binding.button.setOnClickListener {
-//            Navigation.findNavController(it).navigate(R.id.toMainPageFragment)
-//        }
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                Navigation.findNavController(requireView()).navigate(R.id.backToWelcome)
+            }
+        })
+
         return binding.root
     }
 

@@ -1,7 +1,8 @@
 package com.example.androidfinal.repositories
 
-import com.example.androidfinal.interfaces.AuthRepository
+import com.example.androidfinal.repositories.interfaces.AuthRepository
 import com.example.androidfinal.models.User
+import com.example.androidfinal.session.LoginPrefs
 import com.example.androidfinal.utils.FirebaseUtils
 import com.example.androidfinal.utils.Result
 import com.google.firebase.auth.AuthResult
@@ -31,9 +32,6 @@ class AuthRepositoryImpl(): AuthRepository {
         }
     }
 
-
-
-
     override suspend fun login(email: String, password: String): Result<AuthResult> {
         return withContext(Dispatchers.IO) {
            try {
@@ -45,5 +43,7 @@ class AuthRepositoryImpl(): AuthRepository {
         }
     }
 
-    override fun logout() {}
+    override fun logout() {
+        FirebaseUtils.auth.signOut()
+    }
 }

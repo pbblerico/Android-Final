@@ -5,10 +5,10 @@ import android.content.SharedPreferences
 
 class LoginPrefs {
 
-    lateinit var pref: SharedPreferences
-    lateinit var editor: SharedPreferences.Editor
-    val cont: Context
-    var PRIVATEMODE: Int = 0
+    private val pref: SharedPreferences
+    private val editor: SharedPreferences.Editor
+    private val cont: Context
+    private var PRIVATEMODE: Int = 0
 
     constructor(cont: Context) {
         this.cont = cont
@@ -17,20 +17,22 @@ class LoginPrefs {
     }
 
     companion object {
-        val PREF_NAME = "Login_Preferences"
-        val IS_LOGIN = "isLoggedIn"
-        val KEY_EMAIl = "email"
-        val KEY_PASSWORD = "password"
-        val KEY_ROLE = "role"
-        val KEY_ID = "id"
+        const val PREF_NAME = "Login_Preferences"
+        const val IS_LOGIN = "isLoggedIn"
+        const val KEY_EMAIl = "email"
+        const val KEY_USERNAME = "username"
+        const val KEY_PASSWORD = "password"
+        const val KEY_ROLE = "role"
+        const val KEY_ID = "id"
     }
 
-    fun createLoginSession(email: String, password: String, id: String, role: String) {
+    fun createLoginSession(email: String, password: String, id: String, role: String, username: String) {
         editor.putBoolean(IS_LOGIN, true)
         editor.putString(KEY_EMAIl, email)
         editor.putString(KEY_ID, id)
         editor.putString(KEY_PASSWORD, password)
         editor.putString(KEY_ROLE, role)
+        editor.putString(KEY_USERNAME, username)
         editor.commit()
     }
 
@@ -42,6 +44,10 @@ class LoginPrefs {
         (user as HashMap)[KEY_ROLE] = pref.getString(KEY_ROLE, null)!!
 
         return user
+    }
+
+    fun getUserRole(): String {
+        return pref.getString(KEY_ROLE, "CLIENT")!!
     }
 
     fun logoutUser() {
