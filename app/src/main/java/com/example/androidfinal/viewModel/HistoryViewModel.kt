@@ -1,4 +1,6 @@
 package com.example.androidfinal.viewModel
 
-class HistoryViewModel {
+import androidx.lifecycle.ViewModel
+
+class HistoryViewModel(): ViewModel() {
 }

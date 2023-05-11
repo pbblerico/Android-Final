@@ -1,4 +1,6 @@
 package com.example.androidfinal.viewModel
 
-class SettingsViewModel {
+import androidx.lifecycle.ViewModel
+
+class SettingsViewModel(): ViewModel() {
 }
