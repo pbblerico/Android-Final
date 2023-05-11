@@ -29,7 +29,7 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
         binding = FragmentSignupBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[SignUpViewModel::class.java]
 
-        binding.loginBtn.setOnClickListener {
+        binding.registerBtn.setOnClickListener {
             username = binding.uname.text.toString().trim()
             email = binding.email.text.toString().trim()
             password1 = binding.pass1.text.toString().trim()
