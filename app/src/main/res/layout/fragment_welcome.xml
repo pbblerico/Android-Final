@@ -1,36 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".ui.fragments.WelcomeFragment">
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.WelcomeFragment"
+    android:background="@color/dark_blue">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/register2_btn"
+        android:layout_width="211dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="109dp"
-        android:text="WElcome" />
+        android:layout_below="@+id/login2_btn"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="58dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/round_bg2"
+        android:text="SIGN UP"
+        android:textColor="@color/gradient_2_blue"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/login2_btn"
+        android:layout_width="211dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button2"
-        android:layout_marginTop="20dp"
-        android:layout_alignStart="@+id/button2"
-        android:layout_alignEnd="@+id/button2"
-        android:text="login" />
+        android:layout_below="@+id/imageView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="41dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/round_bg"
+        android:text="SIGN IN"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"
-        android:text="signup" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="363dp"
+        android:src="@drawable/play_zone" />
 
 </RelativeLayout>

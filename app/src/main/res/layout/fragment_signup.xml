@@ -85,7 +85,7 @@
         android:textColorHint="#FFFFFF" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/login_btn"
+        android:id="@+id/register_btn"
         android:layout_width="211dp"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/pass2"
