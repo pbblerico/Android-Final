@@ -20,19 +20,17 @@ class LoginPrefs {
         const val PREF_NAME = "Login_Preferences"
         const val IS_LOGIN = "isLoggedIn"
         const val KEY_EMAIl = "email"
-        const val KEY_USERNAME = "username"
         const val KEY_PASSWORD = "password"
         const val KEY_ROLE = "role"
         const val KEY_ID = "id"
     }
 
-    fun createLoginSession(email: String, password: String, id: String, role: String, username: String) {
+    fun createLoginSession(email: String, password: String, id: String, role: String) {
         editor.putBoolean(IS_LOGIN, true)
         editor.putString(KEY_EMAIl, email)
         editor.putString(KEY_ID, id)
         editor.putString(KEY_PASSWORD, password)
         editor.putString(KEY_ROLE, role)
-        editor.putString(KEY_USERNAME, username)
         editor.commit()
     }
 

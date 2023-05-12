@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
-    android:background="@color/purple_200"
+    android:background="@color/cardview_dark_background"
     android:padding="4dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintStart_toEndOf="@id/ImgGame"
@@ -31,6 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Game Name"
+            android:textColor="@color/white"
             android:layout_gravity="top"
             android:textSize="30dp"/>
 
@@ -38,6 +39,7 @@
             android:id="@+id/cost"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:text="cost"
             android:textSize="20dp"/>
 
@@ -45,38 +47,27 @@
             android:id="@+id/company"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:text="company"
             android:textSize="20dp"/>
 
         <TextView
             android:id="@+id/rating"
+            android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="rating"
             android:textSize="20dp"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:gravity="right">
-
-            <Button
+       <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/toCart"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@null"
                 android:text="to cart"
-                android:layout_gravity="right"
+                android:gravity="right"
+                android:textColor="@color/white"
                 android:layout_marginHorizontal="20dp"/>
-
-            <Button
-                android:id="@+id/buy"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="buy"/>
-        </LinearLayout>
 
     </LinearLayout>
 

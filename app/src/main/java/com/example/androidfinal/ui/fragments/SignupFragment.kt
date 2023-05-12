@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.androidfinal.R
@@ -29,14 +30,31 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
         binding = FragmentSignupBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[SignUpViewModel::class.java]
 
-        binding.registerBtn.setOnClickListener {
-            username = binding.uname.text.toString().trim()
-            email = binding.email.text.toString().trim()
-            password1 = binding.pass1.text.toString().trim()
-            password2 = binding.pass2.text.toString().trim()
-
-            viewModel.signUp(username, email, password1, password2)
+        binding.signupBtn.setOnClickListener {
+           signUp()
         }
+
+        binding.registerBtn.setOnClickListener {
+            Navigation.findNavController(requireView()).navigate(R.id.toLoginFragment)
+        }
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                Navigation.findNavController(requireView()).navigate(R.id.backToWelcome)
+            }
+        })
+
+        return binding.root
+    }
+
+    private fun signUp() {
+        username = binding.uname.text.toString().trim()
+        email = binding.email.text.toString().trim()
+        password1 = binding.pass1.text.toString().trim()
+        password2 = binding.pass2.text.toString().trim()
+
+        viewModel.signUp(username, email, password1, password2)
+
 
         viewModel.userSignUpStatus.observe(viewLifecycleOwner) {
             when (it) {
@@ -51,8 +69,6 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
                 }
             }
         }
-
-        return binding.root
     }
 
 

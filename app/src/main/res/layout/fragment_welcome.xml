@@ -8,10 +8,10 @@
     android:background="@color/dark_blue">
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/register2_btn"
+        android:id="@+id/reg_btn"
         android:layout_width="211dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/login2_btn"
+        android:layout_below="@+id/log_btn"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="40dp"
@@ -24,7 +24,7 @@
         android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/login2_btn"
+        android:id="@+id/log_btn"
         android:layout_width="211dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView"

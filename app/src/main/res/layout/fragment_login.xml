@@ -16,6 +16,7 @@
         android:layout_marginStart="42dp"
         android:layout_marginTop="248dp"
         android:layout_marginEnd="42dp"
+        android:textColor="@color/white"
         android:layout_marginBottom="10dp"
         android:autofillHints="username"
         android:background="@color/dark"
@@ -33,10 +34,9 @@
         android:layout_alignEnd="@+id/uname"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
         android:layout_marginTop="334dp"
-        android:layout_marginEnd="0dp"
         android:layout_marginBottom="343dp"
+        android:textColor="@color/white"
         android:autofillHints="password"
         android:background="@color/dark"
         android:fontFamily="sans-serif-light"
@@ -64,7 +64,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/SignInText"
         android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -81,7 +81,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/questionText"
         android:layout_width="192dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -98,7 +98,7 @@
         android:textStyle="normal" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/signUp"
         android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"

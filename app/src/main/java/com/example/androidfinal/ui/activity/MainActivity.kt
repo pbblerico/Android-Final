@@ -2,6 +2,7 @@ package com.example.androidfinal.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.botNavBar.visibility = View.GONE
         hideProgressBar()
         this.session = LoginPrefs(this)
     }
@@ -30,7 +32,9 @@ class MainActivity : AppCompatActivity() {
         binding.prgBar.visibility = View.VISIBLE
     }
     fun setBottomNavBar() {
+        binding.botNavBar.visibility = View.VISIBLE
         binding.botNavBar.menu.clear()
+        Log.d("TAG", this.session.getUserRole())
         val menu = when(this.session.getUserRole()) {
             "ADMIN" -> R.menu.admin_menu
             "SELLER" -> R.menu.seller_menu
