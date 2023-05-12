@@ -12,13 +12,15 @@ import com.example.androidfinal.R
 import com.example.androidfinal.databinding.FragmentProfileBinding
 import com.example.androidfinal.models.User
 import com.example.androidfinal.session.LoginPrefs
+import com.example.androidfinal.session.currentSession
 import com.example.androidfinal.ui.activity.MainActivity
 import com.example.androidfinal.viewModel.ProfileViewModel
 import com.example.androidfinal.utils.Result
 
-class ProfileFragment : Fragment(R.layout.fragment_profile) {
+class ProfileFragment : Fragment(R.layout.fragment_profile), View.OnClickListener {
     private lateinit var binding: FragmentProfileBinding
     private lateinit var viewModel: ProfileViewModel
+    private lateinit var act: MainActivity
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,8 +28,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     ): View {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[ProfileViewModel::class.java]
-//        (activity as MainActivity).setMenu(R.menu.profile_menu)
-
+        act = (activity as MainActivity)
 
         observe()
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
@@ -40,18 +41,19 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     fun observe() {
-        viewModel.getUserInfo("6RqKBh0cvDW99UXQ1IqJ5zh8fIo2")
+        viewModel.getUserInfo(currentSession.id)
         viewModel.user.observe(viewLifecycleOwner) {state ->
             when(state) {
                 is Result.Loading -> {
-                    (activity as MainActivity).showProgressBar()
+                    act.showProgressBar()
                 }
                 is Result.Error -> {
-                    Log.d("TAG", "Error")
+                    Log.d("PROFILE", "Error")
                 }
                 is Result.Success -> {
                     setProfile(state.data!!)
-                    (activity as MainActivity).hideProgressBar()
+                    Log.d("PROFILE", state.data!!.id)
+                    act.hideProgressBar()
                 }
             }
 
@@ -63,6 +65,18 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         binding.username.text = user.username
         binding.realName.text = user.first_name + " " + user.last_name
         binding.email.text = user.email
-        binding.games.text = user.purchasedGame?.size.toString()
+        if(user.purchasedGame != null) {
+            binding.games.text = user.purchasedGame!!.size.toString()
+        }
+        else {
+            binding.games.text = "0"
+        }
+
+    }
+
+    override fun onClick(view: View?) {
+//        when(view) {
+//            binding.history -> Navigation.findNavController(view).navigate(R.id.toHistoryFragment)
+//        }
     }
 }

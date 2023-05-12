@@ -19,6 +19,7 @@ import com.example.androidfinal.viewModel.WelcomeViewModel
 class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
     private lateinit var binding: FragmentWelcomeBinding
     private lateinit var viewModel: WelcomeViewModel
+    private lateinit var session: LoginPrefs
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,24 +28,23 @@ class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
 
         viewModel = ViewModelProvider(this)[WelcomeViewModel::class.java]
 
-        val session = LoginPrefs(requireContext())
+        session = LoginPrefs(requireContext())
 //        session.logoutUser()
         if(session.isLoggedIn()) {
-            login()
+           login()
         }
 
 
 
-        binding.login2Btn.setOnClickListener {
+        binding.logBtn.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.toLoginFragment)
         }
 
-        binding.register2Btn.setOnClickListener {
+        binding.regBtn.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.toSignupFragment)
         }
         return binding.root
     }
-
 
     fun login() {
         viewModel.login("kmirova@gmail.com", "123456")
@@ -65,4 +65,24 @@ class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
             }
         }
     }
+//    fun login() {
+//        Navigation.findNavController(requireView()).navigate(R.id.toMainPage)
+////        viewModel.login("kmirova@gmail.com", "123456")
+////
+////
+////        viewModel.loggedInStatus.observe(viewLifecycleOwner) {
+////            when (it) {
+////                is Result.Loading -> {
+////                    Toast.makeText(context, "Loading", Toast.LENGTH_SHORT).show()
+////                }
+////                is Result.Success -> {
+////                    (activity as MainActivity).setBottomNavBar()
+////                    Navigation.findNavController(requireView()).navigate(R.id.toMainPage)
+////                }
+////                is Result.Error -> {
+////                    Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+////                }
+////            }
+////        }
+//    }
 }

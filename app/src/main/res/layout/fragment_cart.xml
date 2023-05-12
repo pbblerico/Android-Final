@@ -1,14 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.CartFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/top_bar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="5dp">
 
-</FrameLayout>
+        <EditText
+            android:id="@+id/bookET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/search"
+            android:hint="Game"
+            android:padding="15dp"
+            android:textColorHint="@color/black" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/find_btn"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/filter"/>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rlGames"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_bar"
+        android:layout_centerVertical="true"
+        android:layout_marginVertical="5dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/whish_list" />
+
+
+</RelativeLayout>

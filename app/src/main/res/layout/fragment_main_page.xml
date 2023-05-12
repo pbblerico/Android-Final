@@ -4,42 +4,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragments.MainPageFragment">
+    tools:context=".ui.fragments.MainPageFragment"
+    android:background="@color/dark_blue">
 
-    <!-- TODO: Update blank fragment layout -->
-
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:orientation="horizontal"
         android:layout_alignParentTop="true"
-        android:text="main" />
+        android:layout_marginBottom="5dp">
+        <EditText
+            android:id="@+id/bookET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Game"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:padding="15dp"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/search"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="5dp"/>
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="200dp"
-        android:text="back" />
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/find_btn"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/filter"/>
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="item" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rlMovies"
+        android:id="@+id/rlGames"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="-4dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_bar"
+        android:layout_centerVertical="true"
         android:layout_marginVertical="5dp"
-        android:layout_alignParentBottom="true"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_view"/>
+        tools:listitem="@layout/item_view" />
 
 </RelativeLayout>

@@ -1,6 +1,7 @@
 package com.example.androidfinal.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -30,13 +31,29 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
 
         binding.loginBtn.setOnClickListener {
-            this.email = binding.uname.text.toString()
-            this.password = binding.pass.text.toString()
-
-            viewModel.login(email, password)
-
+            login()
         }
 
+        binding.signUp.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.toSignupFragment)
+        }
+
+
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                Navigation.findNavController(requireView()).navigate(R.id.backToWelcome)
+            }
+        })
+
+        return binding.root
+    }
+
+    private fun login() {
+        this.email = binding.uname.text.toString()
+        this.password = binding.pass.text.toString()
+
+        viewModel.login(email, password)
         viewModel.userLoginStatus.observe(viewLifecycleOwner) {
             when (it) {
                 is Result.Loading -> {
@@ -53,14 +70,5 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             }
         }
 
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                Navigation.findNavController(requireView()).navigate(R.id.backToWelcome)
-            }
-        })
-
-        return binding.root
     }
-
-
 }

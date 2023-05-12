@@ -55,6 +55,7 @@
 
 
     <LinearLayout
+        android:id="@+id/infoBlock"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/info"
@@ -142,5 +143,47 @@
         </LinearLayout>
 
     </LinearLayout>
+
+<!--    <TextView-->
+<!--        android:id="@+id/history"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="History"-->
+<!--        android:textSize="20dp"-->
+<!--        android:layout_below="@id/infoBlock"-->
+<!--        />-->
+
+    <TextView
+        android:id="@+id/request"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Requests"
+        android:textSize="20dp"
+        android:layout_below="@id/infoBlock"/>
+
+    <TextView
+        android:id="@+id/comments"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="My comments"
+        android:textSize="20dp"
+        android:layout_below="@id/request"/>\
+
+    <TextView
+        android:id="@+id/library"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="My library"
+        android:textSize="20dp"
+        android:layout_below="@id/comments"/>
+
+    <TextView
+        android:id="@+id/favs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Favourites"
+        android:textSize="20dp"
+        android:layout_below="@id/library"/>
+
 
 </RelativeLayout>
